@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narrow Neck Beach Cafe — Espresso with a View. Every Single Morning.</title>
+    <title>Narrow Neck Beach Cafe — Espresso with a View</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap');
         
         :root {
             --cream: #F9F4EF;
             --espresso: #1C0F0A;
-            --amber: #D4851A;
             --ocean: #0D3B6E;
+            --amber: #D4851A;
             --white: #FFFFFF;
         }
         
@@ -27,10 +27,9 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            line-height: 1.75;
             color: var(--espresso);
-            background: var(--cream);
+            line-height: 1.75;
+            font-size: 1.05rem;
             padding-top: 44px;
         }
         
@@ -48,7 +47,7 @@
             background: var(--amber);
             color: var(--white);
             text-align: center;
-            padding: 12px 20px;
+            padding: 13px 20px;
             font-weight: 600;
             font-size: 13px;
             z-index: 1000;
@@ -60,14 +59,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            background: 
-                linear-gradient(135deg, var(--ocean) 0%, var(--ocean) 50%, var(--amber) 50%, var(--amber) 100%),
-                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
-            background-blend-mode: overlay;
-            color: var(--white);
             text-align: center;
-            padding: 60px 20px;
+            background: radial-gradient(ellipse at 60% 40%, #0D3B6E, #0a1628);
+            color: var(--white);
+            padding: 40px 20px;
+            position: relative;
             overflow: hidden;
         }
         
@@ -76,16 +72,15 @@
             position: absolute;
             top: -50%;
             right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212, 133, 26, 0.2) 0%, transparent 70%);
-            border-radius: 50%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 133, 26, 0.15) 0%, transparent 70%);
             animation: float 20s ease-in-out infinite;
         }
         
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-50px, 50px) scale(1.1); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
         }
         
         .hero-content {
@@ -108,37 +103,34 @@
         
         .hero h1 {
             font-size: 4.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             line-height: 1.1;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         
         .hero .business-name {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            letter-spacing: 0.1em;
+            font-weight: 300;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            margin-bottom: 30px;
-            opacity: 0.95;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
         
         .hero p {
             font-size: 1.25rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
         
         .instagram-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: var(--white);
             text-decoration: none;
-            font-weight: 500;
+            font-size: 1rem;
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -154,14 +146,6 @@
         
         section {
             padding: 120px 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .container {
@@ -174,152 +158,120 @@
             margin: 0 auto;
         }
         
-        .about {
-            background: var(--white);
-        }
-        
-        .about h2 {
+        .section-title {
             font-size: 3rem;
-            margin-bottom: 40px;
-            color: var(--ocean);
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
         
-        .about p {
-            margin-bottom: 24px;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
             color: var(--espresso);
+            opacity: 0.8;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+        
+        .about {
+            background: var(--cream);
+        }
+        
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
         }
         
         .menu {
-            background: var(--espresso);
-            color: var(--cream);
-        }
-        
-        .menu h2 {
-            font-size: 3rem;
-            margin-bottom: 60px;
-            text-align: center;
-            color: var(--cream);
+            background: var(--white);
         }
         
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            margin-top: 3rem;
         }
         
         .menu-item {
-            background: rgba(249, 244, 239, 0.05);
+            background: var(--cream);
             padding: 35px;
             border-radius: 12px;
-            border: 1px solid rgba(249, 244, 239, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(28, 15, 10, 0.08);
         }
         
         .menu-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(212, 133, 26, 0.2);
-            background: rgba(249, 244, 239, 0.08);
+            box-shadow: 0 8px 20px rgba(28, 15, 10, 0.15);
         }
         
         .menu-item-icon {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             display: block;
         }
         
         .menu-item h3 {
             font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--amber);
+            margin-bottom: 0.75rem;
+            color: var(--ocean);
         }
         
         .menu-item p {
-            opacity: 0.9;
+            color: var(--espresso);
+            opacity: 0.85;
             line-height: 1.7;
         }
         
-        .services {
-            background: var(--cream);
-        }
-        
-        .services h2 {
-            font-size: 3rem;
-            margin-bottom: 60px;
-            text-align: center;
-            color: var(--ocean);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(28, 15, 10, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(28, 15, 10, 0.15);
-        }
-        
-        .service-card svg {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 20px;
-        }
-        
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--ocean);
-        }
-        
-        .service-card p {
-            color: var(--espresso);
-            opacity: 0.85;
-        }
-        
-        .contact {
+        .location {
             background: var(--ocean);
-            color: var(--cream);
+            color: var(--white);
         }
         
-        .contact h2 {
-            font-size: 3rem;
-            margin-bottom: 50px;
-            text-align: center;
-            color: var(--cream);
+        .location .section-title {
+            color: var(--white);
         }
         
-        .contact-content {
+        .location .section-subtitle {
+            color: var(--white);
+            opacity: 0.9;
+        }
+        
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            max-width: 900px;
-            margin: 0 auto;
+            gap: 40px;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
         }
         
         .contact-item h3 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--amber);
+            margin-bottom: 1rem;
+            color: var(--white);
         }
         
-        .contact-item a {
-            color: var(--cream);
+        .contact-item p, .contact-item a {
+            color: var(--white);
+            opacity: 0.9;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         
         .contact-item a:hover {
-            color: var(--amber);
+            opacity: 1;
         }
         
         .cta-button {
@@ -330,22 +282,51 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 30px;
-            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 133, 26, 0.3);
         }
         
         .cta-button:hover {
-            background: #B87316;
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 133, 26, 0.4);
+        }
+        
+        .hours-table {
+            margin: 3rem auto 0;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-day {
+            font-weight: 600;
+        }
+        
+        .hours-time {
+            opacity: 0.9;
         }
         
         footer {
             background: var(--espresso);
-            color: var(--cream);
+            color: var(--white);
             text-align: center;
             padding: 40px 20px;
             font-size: 0.95rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
         
         @media (max-width: 768px) {
@@ -354,22 +335,26 @@
             }
             
             .hero .business-name {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
             }
             
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
             section {
                 padding: 80px 20px;
             }
             
-            .about h2, .menu h2, .services h2, .contact h2 {
-                font-size: 2.2rem;
+            .menu-grid {
+                grid-template-columns: 1fr;
             }
             
-            .menu-grid, .services-grid {
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -380,11 +365,11 @@
         ⚡ Free preview for Narrow Neck Beach Cafe — reply to claim your site
     </div>
     
-    <div class="hero">
+    <section class="hero">
         <div class="hero-content">
             <h1>Espresso with a View.<br>Every Single Morning.</h1>
-            <div class="business-name">Narrow Neck Beach Cafe</div>
-            <p>Where the Devonport locals come before the ferry, the surf crowd refuels after dawn patrol, and the harbour sparkles through every window.</p>
+            <p class="business-name">Narrow Neck Beach Cafe</p>
+            <p>Where the Devonport locals come for their flat whites before the ferry, and where visitors discover why Auckland's North Shore starts the day differently.</p>
             <a href="https://instagram.com/narrowneckbeachcafe" class="instagram-link" target="_blank">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -392,105 +377,93 @@
                 @narrowneckbeachcafe
             </a>
         </div>
-    </div>
+    </section>
     
-    <section class="about reveal">
+    <section class="about">
         <div class="container-narrow">
-            <h2>Right on the Sand, Right on Time</h2>
-            <p>We're the cafe that sits on Narrow Neck Beach with our toes practically in the Waitematā Harbour. You know us — the one where the windows fog up on cold mornings and the deck fills with golden retrievers and salty wetsuits by 8am.</p>
-            <p>Our regulars are the swimmers who brave the winter water, the mums with prams doing the beach loop, the Takapuna workers who detour for a proper coffee before the day starts. We're open early because we know you need us early.</p>
-            <p>The menu is what you'd hope for: açaí bowls loaded with local fruit, bacon and egg rolls that actually satisfy, cabinet food that changes daily based on what our baker feels like making. And the flat whites? Strong, silky, consistent. The kind you think about on your commute.</p>
-            <p>This is the spot where Devonport feels like a village. Where you run into your neighbour, where the barista knows your order, where the view makes you remember why you live in Auckland.</p>
+            <h2 class="section-title">Right on the Sand</h2>
+            <p class="section-subtitle">Where Narrow Neck Beach meets your morning ritual</p>
+            <p class="about-text">
+                You'll find us where the promenade meets the shoreline — the spot where morning runners stop for their post-workout smoothie bowl, where parents grab a long black while the kids chase waves, and where the regulars know exactly which table catches the best morning light.
+            </p>
+            <p class="about-text">
+                We're not trying to be fancy. We're here because Narrow Neck deserved a proper cafe — one that understands the difference between a rushed takeaway and a slow Saturday morning with the paper. Our kitchen opens early because the surf crowd needs fuel, and we stay open late because sunset over Rangitoto doesn't wait for anyone.
+            </p>
+            <p class="about-text">
+                The coffee is strong, the cabinet food is made fresh each morning, and the view is unbeatable. That's the formula. That's why you'll see the same faces here every week — because once you find your spot on this beach, you keep coming back.
+            </p>
         </div>
     </section>
     
-    <section class="menu reveal">
+    <section class="menu">
         <div class="container">
-            <h2>What the Regulars Order</h2>
+            <h2 class="section-title">What We're Known For</h2>
+            <p class="section-subtitle">The menu favourites that keep the locals coming back</p>
             <div class="menu-grid">
                 <div class="menu-item">
                     <span class="menu-item-icon">☕</span>
-                    <h3>The House Flat White</h3>
-                    <p>Our single-origin blend, pulled tight and poured smooth. This is the one the 7am crowd can't start without — bold, balanced, no bitterness.</p>
+                    <h3>Flat White</h3>
+                    <p>Our house blend, roasted in Grey Lynn, silky and strong — the one the regulars order without even looking at the menu.</p>
                 </div>
                 <div class="menu-item">
                     <span class="menu-item-icon">🥑</span>
                     <h3>Smashed Avo on Sourdough</h3>
-                    <p>Creamy avocado, heirloom tomatoes, feta crumble, and a crack of good salt on thick-cut sourdough from the bakery down the road. Simple, perfect, always fresh.</p>
+                    <p>Perfectly ripe avocado, heirloom tomatoes, feta, and a poached egg on thick-cut sourdough from the bakery down the road.</p>
                 </div>
                 <div class="menu-item">
-                    <span class="menu-item-icon">🍓</span>
-                    <h3>Açaí Bowl</h3>
-                    <p>Thick açaí base topped with granola, fresh berries, banana, coconut, and a drizzle of local honey. The post-swim reward that tastes like summer.</p>
+                    <span class="menu-item-icon">🥥</span>
+                    <h3>Acai Bowl</h3>
+                    <p>Thick acai base topped with fresh banana, granola, coconut flakes, and local honey — the post-swim breakfast of champions.</p>
                 </div>
                 <div class="menu-item">
-                    <span class="menu-item-icon">🥓</span>
-                    <h3>Bacon & Egg Roll</h3>
-                    <p>Crispy streaky bacon, fried egg with a runny yolk, rocket, aioli, on a soft brioche bun. Messy, satisfying, worth every napkin.</p>
-                </div>
-                <div class="menu-item">
-                    <span class="menu-item-icon">🥐</span>
-                    <h3>Almond Croissant</h3>
-                    <p>Flaky, buttery, filled with almond cream and dusted with icing sugar. Baked fresh every morning and gone by 10am most days.</p>
+                    <span class="menu-item-icon">🥪</span>
+                    <h3>Bacon & Egg Brioche</h3>
+                    <p>Free-range eggs, crispy streaky bacon, rocket, and aioli on a toasted brioche bun — simple, satisfying, perfect.</p>
                 </div>
                 <div class="menu-item">
                     <span class="menu-item-icon">🍰</span>
-                    <h3>Cabinet Slice of the Day</h3>
-                    <p>Our baker's mood dictates the lineup — lemon curd tart, carrot cake, chocolate brownie, banana bread. Always homemade, always worth the calories.</p>
+                    <h3>Cabinet Treats</h3>
+                    <p>Rotating selection of friands, slices, and seasonal cakes baked fresh each morning — ask what's good today.</p>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-item-icon">🥤</span>
+                    <h3>Fresh Smoothies</h3>
+                    <p>Blended with frozen banana, seasonal fruit, and your choice of milk — the mid-afternoon pick-me-up you didn't know you needed.</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="services reveal">
+    <section class="location">
         <div class="container">
-            <h2>How We Serve You</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #D4851A;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                    <h3>Dine In or Takeaway</h3>
-                    <p>Grab and go before work, or settle in on the deck with the paper and watch the harbour. Either way, you're sorted.</p>
-                </div>
-                <div class="service-card">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #D4851A;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                    <h3>Group Bookings</h3>
-                    <p>Planning a birthday breakfast or a team catch-up? We can reserve a section for groups — just give us a heads-up.</p>
-                </div>
-                <div class="service-card">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #D4851A;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <h3>Early Opening</h3>
-                    <p>We're here when you need us — early enough for the dawn patrol surfers and the pre-ferry commuters rushing to the city.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="contact reveal">
-        <div class="container">
-            <h2>Come Find Us on the Beach</h2>
-            <div class="contact-content">
+            <h2 class="section-title">Come Find Us</h2>
+            <p class="section-subtitle">Right where the beach path meets the cafe culture</p>
+            <div class="contact-grid">
                 <div class="contact-item">
+                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
                     <h3>Location</h3>
-                    <p>Narrow Neck Beach<br>Auckland, New Zealand</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Narrow+Neck+Beach+Cafe+Auckland" class="cta-button" target="_blank">Get Directions →</a>
+                    <p>Narrow Neck Beach</p>
+                    <p>Devonport, Auckland</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Narrow+Neck+Beach+Cafe+Auckland" class="cta-button">Get Directions →</a>
                 </div>
                 <div class="contact-item">
-                    <h3>Connect</h3>
-                    <p>Follow us for daily specials, weather updates, and the occasional photo of a very good dog on our deck.</p>
-                    <a href="https://instagram.com/narrowneckbeachcafe" target="_blank">@narrowneckbeachcafe</a>
+                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                    <h3>Hours</h3>
+                    <div class="hours-table">
+                        <div class="hours-row">
+                            <span class="hours-day">Monday - Friday</span>
+                            <span class="hours-time">6:30am - 4:00pm</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="hours-day">Saturday - Sunday</span>
+                            <span class="hours-time">7:00am - 5:00pm</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <p>&copy; 2026 Narrow Neck Beach Cafe. Site preview by [Your Agency]</p>
-    </footer>
-    
-    <script>
+                <div class="contact-item">
+                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-
