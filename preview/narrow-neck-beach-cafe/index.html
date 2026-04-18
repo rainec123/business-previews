@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrow Neck Beach Cafe - Auckland</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary: #8B6F47;
+            --secondary: #D4A574;
+            --accent: #F4A460;
+            --light: #FFF8F3;
+            --dark: #2C2416;
+            --text: #3D3D3D;
+            --border: #E8D5C4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 50px;
+        }
+
+        /* Sticky Banner */
+        .sticky-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 700;
+            font-size: 13px;
+            z-index: 9999;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #D2B48C 0%, #8B6F47 50%, #5C4033 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 40px 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #FF8C42;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 164, 96, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-instagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            margin-top: 20px;
+        }
+
+        .instagram-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light);
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .about-content {
+            display: grid;
+            gap: 25px;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--dark);
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            background: rgba(244, 164, 96, 0.15);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            opacity: 0.9;
+        }
+
+        .service-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--accent);
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .map-icon {
+            width: 60px;
+            height: 60px;
+            opacity: 0.6;
+        }
+
+        .directions-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 28px;
+            background: white;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .directions-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #999;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Banner -->
+    <div class="sticky-banner">
+        ⚡ This is a free preview — reply to claim & customise your site
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Narrow Neck Beach Cafe</h1>
+            <p>Your favourite waterside escape in the heart of Auckland</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Explore</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+            <div class="hero-instagram">
+                <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                </svg>
+                <span>@narrowneckbeachcafe</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">Welcome to Narrow Neck Beach Cafe</h2>
+        <div class="about-content">
+            <p class="about-text">
+                Nestled in one of Auckland's most picturesque beachside locations, Narrow Neck Beach Cafe is your go-to destination for quality coffee, fresh food, and genuine hospitality. We're passionate about creating a warm, welcoming atmosphere where locals and visitors alike can relax, connect, and enjoy the best the beach has to offer.
+            </p>
+            <p class="about-text">
+                Whether you're starting your day with a perfectly crafted espresso, grabbing lunch with a view, or catching up with friends over a sweet treat, we've got you covered. Our team takes pride in every cup we pour and every plate we serve. We believe that great coffee and good company are the foundation of a perfect day at the beach.
+            </p>
+            <p class="about-text">
+                We're committed to providing exceptional service and creating memories that last. From early morning surfers to afternoon beach-goers, Narrow Neck Beach Cafe is where the community gathers. Come see why we're Auckland's favourite beachside cafe.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <h2 class="services-title">What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 3L5 7m0 0l4 4m-4-4h16v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"></path>
+                    </svg>
+                    <h3>Premium Coffee</h3>
+                    <p>Expertly roasted beans and skilled baristas crafting your perfect cup every single time.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2C6.48
