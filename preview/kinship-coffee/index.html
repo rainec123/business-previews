@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinship Coffee</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --accent: #2D6A8F;
+  --dark: #1a1009;
+  --mid: #5a4a3a;
+  --light: #f7f3ee;
+  --white: #ffffff;
+  --border: #e8e0d5;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dark);
+  background: var(--white);
+  padding-top: 40px;
+}
+
+/* ── Banner ─────────────────────────────────── */
+.preview-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  background: var(--dark);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 1000;
+}
+.preview-bar span { color: var(--accent); margin-right: 6px; }
+
+/* ── Nav ────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 40px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--dark); }
+
+/* ── Hero ───────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 104px);
+}
+.hero-left {
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 70%, rgba(255,255,255,0.04) 0%, transparent 60%);
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  max-width: 320px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--accent);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  transition: opacity 0.2s;
+}
+.hero-cta:hover { opacity: 0.85; }
+.hero-cta svg { width: 16px; height: 16px; }
+
+.hero-right {
+  background: var(--light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 80px 64px;
+  gap: 40px;
+}
+.hero-stat {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  width: 100%;
+}
+.hero-stat-number {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--dark);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* ── About ──────────────────────────────────── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+.about-left {
+  padding: 100px 80px 100px 80px;
+  border-right: 1px solid var(--border);
+}
+.about-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+.about-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-bottom: 40px;
+}
+.about-body p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid);
+  margin-bottom: 20px;
+  line-height: 1.85;
+}
+.about-right {
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+.about-detail {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.about-detail-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+.about-detail-value {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+/* ── Menu ───────────────────────────────────── */
+.menu {
+  background: var(--dark);
+  padding: 100px 80px;
+}
+.menu-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 32px;
+}
+.menu-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.menu-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.menu-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  max-width: 240px;
+  text-align: right;
+  line-height: 1.7;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.menu-item {
+  background: var(--dark);
+  padding: 40px;
+  transition: background 0.3s;
+}
+.menu-item:hover { background: #1a1a1a; }
+.menu-item-name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.menu-item-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+.menu-item-price {
+  font-size: 12px;
+  color: var(--accent);
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+/* ── Pull quote ─────────────────────────────── */
+.pullquote {
+  padding: 100px 80px;
+  background: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pullquote blockquote {
+  max-width: 700px;
+}
+.pullquote blockquote p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.pullquote cite {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-style: normal;
+}
+
+/* ── Contact ────────────────────────────────── */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+  min-height: 400px;
+}
+.contact-left {
+  padding: 80px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+.contact-heading {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 40px;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.contact-row-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.contact-row-value {
+  font-size: 15px;
+  color: var(--dark);
+}
+.contact-row-value a {
+  color: var(--dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-row-value a:hover { color: var(--accent); }
+
+.contact-right {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hours-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.hours-list .day { color: var(--mid); font-weight: 400; }
+.hours-list .time { color: var(--dark); font-weight: 500; }
+.directions-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--dark);
+  padding-bottom: 2px;
+  align-self: flex-start;
+  margin-top: 40px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.directions-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── Footer ─────────────────────────────────── */
+footer {
+  background: var(--dark);
+  padding: 40px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--white);
+  opacity: 0.7;
+}
+.footer-credit {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 60px 32px; }
+  .hero-right { padding: 48px 32px; flex-direction: row; flex-wrap: wrap; }
+  .hero-stat { width: 45%; }
+  .about { grid-template-columns: 1fr; }
+  .about-left { padding: 60px 32px; border-right: none; border-bottom: 1px solid var(--border); }
+  .about-right { padding: 60px 32px; }
+  .menu { padding: 60px 32px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .menu-sub { text-align: left; }
+  .pullquote { padding: 60px 32px; }
+  .contact { grid-template-columns: 1fr; }
+  .contact-left { padding: 60px 32px; border-right: none; border-bottom: 1px solid var(--border); }
+  .contact-right { padding: 60px 32px; }
+  footer { padding: 32px; flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">
+  <span>⚡</span> Free preview — reply to claim & customise your site
+</div>
+
+<nav>
+  <a href="#" class="nav-logo">Kinship Coffee</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#contact">Visit Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Takapuna, Auckland</p>
+    <h1 class="hero-headline">Your Morning Ritual, Perfected Daily</h1>
+    <p class="hero-sub">Tucked into Takapuna's heart, we're where the beach crowd meets the school run, the freelancers find their corner table, and everyone knows a great flat white when they taste one.</p>
+    <a href="#menu" class="hero-cta">
+      See the Menu
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-number">4.7★</div>
+      <div class="hero-stat-label">Google rating</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">7am</div>
+      <div class="hero-stat-label">Weekday doors open</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">94+</div>
+      <div class="hero-stat-label">Happy regulars</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-left">
+    <p class="about-label">Our Story</p>
+    <h2 class="about-heading">Where Specialty Beans Meet North Shore Mornings</h2>
+    <div class="about-body"><p>We opened Kinship because Takapuna deserved a coffee spot that takes the beans as seriously as the welcome. Just off the main drag, close enough to the beach that you can taste the salt air with your cold brew, we've become the place locals duck into before work and linger in on weekends. Our baristas know your order by your second visit.</p>
+<p>The specialty beans we source aren't here to show off — they're here because great coffee starts with great raw material, roasted right, pulled with care. Our brunch menu follows the same logic: simple things done well. Avocado toast that doesn't need a filter, eggs benedict with hollandaise we make every morning, acai bowls for the post-swim crowd.</p>
+<p>What keeps people coming back isn't just the coffee, though plenty have called it the best in Takapuna. It's the feeling of a place that knows what it is. Warm without trying too hard. Skilled without being precious. The kind of spot where you can read the paper in peace or catch up with a friend, and either way, you'll leave better than you arrived.</p></div>
+  </div>
+  <div class="about-right">
+    <div class="about-detail">
+      <div class="about-detail-label">Neighbourhood</div>
+      <div class="about-detail-value">Central Takapuna, walking distance from the beach</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">Known for</div>
+      <div class="about-detail-value">Specialty flat whites, weekend brunch, genuinely friendly service</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">Vibe</div>
+      <div class="about-detail-value">Relaxed, welcoming, unpretentious</div>
+    </div>
+    <div class="about-detail">
+      <div class="about-detail-label">Follow</div>
+      <div class="about-detail-value"><a href="https://instagram.com/" target="_blank">@</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-header">
+    <div>
+      <p class="menu-label">What We Serve</p>
+      <h2 class="menu-heading">What We're Pouring &amp; Plating</h2>
+    </div>
+    <p class="menu-sub">Breakfast and brunch favourites, made from scratch, served until 3pm.</p>
+  </div>
+  <div class="menu-grid">
+    
+    <div class="menu-item">
+      <div class="menu-item-name">Flat White</div>
+      <div class="menu-item-desc">Our signature pour — specialty beans pulled smooth, milk stretched just right, the coffee that built our reputation.</div>
+      <div class="menu-item-price">$5.00</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-name">Cold Brew</div>
+      <div class="menu-item-desc">Steeped overnight, served over ice, clean and bright without the bitterness — perfect for beach days.</div>
+      <div class="menu-item-price">$6.50</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-name">Avocado Toast</div>
+      <div class="menu-item-desc">Smashed avo on sourdough with feta, cherry tomatoes, and a crack of pepper — simple, satisfying, done properly.</div>
+      <div class="menu-item-price">$16.00</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-name">Eggs Benedict</div>
+      <div class="menu-item-desc">Poached eggs on toasted muffins with our house-made hollandaise, choice of bacon or salmon.</div>
+      <div class="menu-item-price">$19.50</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-name">Acai Bowl</div>
+      <div class="menu-item-desc">Thick acai topped with granola, fresh fruit, coconut, and a drizzle of honey — the post-swim essential.</div>
+      <div class="menu-item-price">$15.00</div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-item-name">Big Breakfast</div>
+      <div class="menu-item-desc">Eggs your way, bacon, sausage, hash brown, roasted tomato, mushrooms, and toast — when you need the full spread.</div>
+      <div class="menu-item-price">$22.00</div>
+    </div>
+  </div>
+</section>
+
+
+  <section class="pullquote">
+    <blockquote>
+      <p>"Best coffee in Takapuna, hands down. The staff remember your name, and that flat white is worth crossing town for."</p>
+      <cite>A regular since day one</cite>
+    </blockquote>
+  </section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div>
+      <p class="contact-label">Find Us</p>
+      <h2 class="contact-heading">Come in.<br>We'll have it<br><em style="font-family:var(--font-heading);font-style:italic;color:var(--accent)">ready.</em></h2>
+    </div>
+    <div class="contact-info">
+      
+    <div class="contact-row">
+      <div class="contact-row-label">Address</div>
+      <div class="contact-row-value">Takapuna, Auckland</div>
+    </div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div>
+      <p class="contact-label" style="margin-bottom:24px;">Hours</p>
+      <ul class="hours-list">
+    <li>
+      <span class="day">Monday – Friday</span>
+      <span class="time">7:00am – 3:00pm</span>
+    </li>
+
+    <li>
+      <span class="day">Saturday</span>
+      <span class="time">8:00am – 3:00pm</span>
+    </li>
+
+    <li>
+      <span class="day">Sunday</span>
+      <span class="time">8:00am – 3:00pm</span>
+    </li></ul>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&query=Takapuna%2C%20Auckland" target="_blank" class="directions-link">
+      Get Directions
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Kinship Coffee</span>
+  <span class="footer-credit">Site preview — reply to claim yours</span>
+</footer>
+
+</body>
+</html>
